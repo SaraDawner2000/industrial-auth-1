@@ -10,14 +10,6 @@ class CommentPolicy
     user == comment.author
   end
 
-  def new?
-    create?
-  end
-
-  def edit?
-    update?
-  end
-
   def create?
     user == comment.author ||
       !comment.author.private? ||

@@ -10,18 +10,6 @@ class UserPolicy
     true
   end
 
-  def new?
-    create?
-  end
-
-  def edit?
-    update?
-  end
-
-  def create?
-    true
-  end
-
   def update?
     user == current_user
   end
