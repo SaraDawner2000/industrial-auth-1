@@ -1,9 +1,9 @@
 class FollowRequestsController < ApplicationController
   before_action :set_follow_request, only: %i[ show edit update destroy ]
+  before_action { authorize @follow_request || FollowRequest }
 
   # POST /follow_requests or /follow_requests.json
   def create
-    authorize @follow_request
     @follow_request = FollowRequest.new(follow_request_params)
     @follow_request.sender = current_user
 
@@ -20,7 +20,6 @@ class FollowRequestsController < ApplicationController
 
   # PATCH/PUT /follow_requests/1 or /follow_requests/1.json
   def update
-    authorize @follow_request
     respond_to do |format|
       if @follow_request.update(follow_request_params)
         format.html { redirect_back fallback_location: root_url, notice: "Follow request was successfully updated." }
@@ -34,7 +33,6 @@ class FollowRequestsController < ApplicationController
 
   # DELETE /follow_requests/1 or /follow_requests/1.json
   def destroy
-    authorize @follow_request
     @follow_request.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Follow request was successfully destroyed." }
