@@ -10,9 +10,4 @@ class FollowRequestPolicy < ApplicationPolicy
     user == follow_request.sender ||
     user == follow_request.recipient
   end
-
-  def destroy?
-    user == follow_request.sender ||
-    user == follow_request.recipient
-  end
 end

@@ -8,7 +8,6 @@ class ApplicationPolicy
     @record = record
   end
 
-
   def create?
     true
   end
@@ -18,6 +17,10 @@ class ApplicationPolicy
   end
 
   def edit?
+    update?
+  end
+
+  def destroy?
     update?
   end
 

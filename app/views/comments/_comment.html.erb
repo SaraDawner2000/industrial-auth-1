@@ -9,7 +9,7 @@
       </h5>
       <p><%= comment.body %></p>
     </div>
-    <% if policy(comment).show? %>
+    <% if policy(comment).update? %>
       <div>
         <%= link_to edit_comment_path(comment), class: "btn btn-link btn-sm text-muted" do %>
           <i class="fas fa-edit fa-fw"></i>

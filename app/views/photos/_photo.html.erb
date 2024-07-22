@@ -30,9 +30,8 @@
       <%= render "comments/comment", comment: comment %>
     <% end %>
   </ul>
-  <% if policy(photo).show? %>
+
   <div class="card-body">
     <%= render "comments/form", comment: photo.comments.build %>
   </div>
-  <% end %>
 </div>

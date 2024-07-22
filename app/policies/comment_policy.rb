@@ -1,4 +1,4 @@
-class CommentPolicy
+class CommentPolicy < ApplicationPolicy
   attr_reader :user, :comment
 
   def initialize(user, comment)
@@ -7,7 +7,7 @@ class CommentPolicy
   end
 
   def show?
-    user == comment.author
+    true
   end
 
   def create?
@@ -17,10 +17,6 @@ class CommentPolicy
   end
 
   def update?
-    user == comment.author
-  end
-
-  def destroy?
     user == comment.author
   end
 end

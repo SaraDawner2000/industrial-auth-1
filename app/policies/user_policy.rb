@@ -14,10 +14,6 @@ class UserPolicy
     user == current_user
   end
 
-  def destroy?
-    user == current_user
-  end
-
   def followers?
     true
   end
@@ -33,16 +29,14 @@ class UserPolicy
   end
 
   def feed?
-    user == current_user
+    update?
   end
 
   def discover?
-    user == current_user
+    update?
   end
 
   def show_photos?
-    user == current_user ||
-    !user.private? ||
-    user.followers.include?(current_user)
+    liked?
   end
 end

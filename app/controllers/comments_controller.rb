@@ -1,13 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-  before_action -> { authorize @comment || Comment }, except: [:new, :create]
-
-  # GET /comments/new
-  def new
-    @comment = Comment.new
-
-    authorize @comment
-  end
+  before_action -> { authorize @comment || @comment = Comment.new }, except: [:create]
 
   # POST /comments or /comments.json
   def create
